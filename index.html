@@ -36,7 +36,7 @@
       margin-bottom: 10px;
     }
 
-    #santa-animation {
+    #santa-animation, #letter-animation {
       position: absolute;
       top: calc(50% - 75px); /* half of the santa/letter image height */
       left: -75px; /* half of the santa/letter image width */
@@ -62,7 +62,7 @@
       }
     }
 
-    #santa-animation img {
+    #santa-animation img, #letter-animation img {
       width: 150px; /* Adjust the width and height as needed */
       height: 150px;
     }
@@ -103,8 +103,10 @@
       }
 
       var santaAnimation = document.getElementById('santa-animation');
+      var letterAnimation = document.getElementById('letter-animation');
 
       santaAnimation.style.animation = 'moveImages 5s linear forwards';
+      letterAnimation.style.animation = 'moveImages 5s linear forwards';
 
       isSantaMoving = true;
       sessionStorage.setItem("hasSentLetter", true); // 편지를 보냈다는 정보를 세션 스토리지에 저장
@@ -132,6 +134,7 @@
       .then(data => {
         console.log(data);
         startSantaAnimation();
+        alert("산타에게 편지가 전달됐어요!");
       })
       .catch(error => console.error('Error:', error));
     }
@@ -139,9 +142,12 @@
 </head>
 <body>
   <div id="letter-container">
-    <img id="moon-img" src="moon.png" alt="Moon Image">
+    <img id="moon-img" src="Moon.png" alt="Moon Image">
     <div id="santa-animation">
       <img src="santa.png" id="santa-image-preview" alt="Santa Image">
+    </div>
+    <div id="letter-animation">
+      <img src="letter.png" id="letter-image-preview" alt="Letter Image">
     </div>
     <h1>산타에게 편지 보내기</h1>
     <input type="text" id="nickname" placeholder="닉네임">
